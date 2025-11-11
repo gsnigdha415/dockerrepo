@@ -32,3 +32,7 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Pull existing image from ECR
+        run: |
+          docker pull ${{ steps.login-ecr.outputs.registry }}/your-ecr-repo:latest || true
