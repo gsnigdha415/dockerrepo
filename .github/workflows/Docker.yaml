@@ -44,4 +44,4 @@ jobs:
 
       - name: Run the Docker image
         run: |
-          docker run -dit ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ secrets.IMAGE_TAG }}
+          docker run --rm -v ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ secrets.IMAGE_TAG }}
