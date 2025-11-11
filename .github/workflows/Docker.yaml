@@ -44,4 +44,4 @@ jobs:
 
       - name: Run the Docker image
         run: |
-          run: docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
