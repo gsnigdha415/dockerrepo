@@ -48,6 +48,7 @@ jobs:
          ECR_REPOSITORY: flask
          IMAGE_TAG: ${{ github.sha }}
         run: |
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG python --version
 
 
