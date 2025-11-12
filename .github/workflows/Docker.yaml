@@ -42,11 +42,12 @@ jobs:
         run: |
           docker pull ${{ steps.login-ecr.outputs.registry }}/your-ecr-repo:latest || true
 
-      - name: Run the Docker image
+      - name: Smoke test Docker image
         env:
          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: flask 
+         ECR_REPOSITORY: flask
          IMAGE_TAG: ${{ github.sha }}
         run: |
-         docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG python --version
+
 
