@@ -41,6 +41,8 @@ jobs:
       - name: Login to instance
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@98.92.93.126 << 'EOF'
+          touch file1
+          
           sudo su
           aws ecr get-login-password --region us-east-1 | docker login --snigdha415 AWS --password-stdin 495395224185.dkr.ecr.us-east-1.amazonaws.com
           sudo docker pull ${{ steps.login-ecr.outputs.registry }}/flask:latest || true
