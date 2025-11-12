@@ -41,8 +41,6 @@ jobs:
       - name: Login to instance
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@98.92.93.126 << 'EOF'
-          docker pull ${{ steps.login-ecr.outputs.registry }}/flask:latest || true
-          docker run -d --name smoke_test -p 5000:5000 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          sudo docker pull ${{ steps.login-ecr.outputs.registry }}/flask:latest || true
+          sudo docker run -d --name smoke_test -p 5000:5000 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           
-
-
